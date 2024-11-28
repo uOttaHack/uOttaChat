@@ -1,6 +1,6 @@
 # **uOttaChat**
 
-uOttaChat is uOttaHack's fine-tuned LLM! This repo is the FastAPI backend that allows the custom LLM to be live on the internet via a REST API.
+uOttaChat is uOttaHack's fine-tuned LLM! This repo is the FastAPI backend that allows uOttaChat to be live on the internet via REST API.
 
 ## **About**
 
@@ -9,6 +9,8 @@ Built with **Python** and **FastAPI**, uOttaChat runs on an **EC2 instance** and
 Use Case: We integrated it into the live site via a chat page!
 
 ## **Architecture**
+
+<img width="1793" alt="design" src="https://github.com/user-attachments/assets/ea7a6cac-3bc1-45af-8f76-15bb673c1b24">
 
 - **Backend**: 
   - **FastAPI** REST API.
