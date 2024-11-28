@@ -9,8 +9,8 @@ Built with **Python** and **FastAPI**, uOttaChat runs on an **EC2 instance** and
 Use Case: We integrated it into the live site via a chat page!
 
 ## **Architecture**
+<img width="1991" alt="Screen Shot 2024-11-28 at 5 51 58 PM" src="https://github.com/user-attachments/assets/b58f2840-306d-410b-974b-1d8c2b9cf5c9">
 
-<img width="1793" alt="design" src="https://github.com/user-attachments/assets/ea7a6cac-3bc1-45af-8f76-15bb673c1b24">
 
 - **Backend**: 
   - **FastAPI** REST API.
