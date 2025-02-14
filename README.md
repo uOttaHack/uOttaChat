@@ -1,4 +1,6 @@
 # uOttaChat
+![chat](https://github.com/user-attachments/assets/c2be8778-ce83-4c9a-8dd7-ee09c1aaf74f)
+
 
 uOttaChat is a chatbot service built by the uOttaHack team (the University of Ottawa's hackathon) and released as an open-source project for the hackathon community. It enables participants to ask questions about the event and receive real-time, context-aware responses through live sites & Discord integration.
 
@@ -217,24 +219,6 @@ const Chat: React.FC = () => {
 
 export default Chat;
 ```
-
-### Key Features
-
-- Message history management
-- Loading states
-- Error handling
-- TypeScript support
-- Axios for API calls
-
-### Implementation Notes
-
-1. Replace the API endpoint with your deployment URL
-2. Add appropriate styling
-3. Consider adding:
-   - Message persistence
-   - Rate limiting
-   - Typing indicators
-   - Message validation
 
 ## Contributing
 1. Fork the repository
