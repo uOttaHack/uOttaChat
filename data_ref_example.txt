@@ -1,0 +1,146 @@
+1. General Information
+Event Overview
+
+Link to registration: [Insert registration URL]
+Registration opens several weeks before the event. Participants must register to receive access to event resources.
+2. Event Timeline & Details
+Dates & Schedule
+
+Dates: [Insert dates for the current year]
+Event Start Time: [Insert start time]
+Event End Time: [Insert end time]
+Key Event Milestones
+
+Friday:
+Opening ceremony and team formation
+Project brainstorming begins
+Sponsor introductions and API demos
+Saturday:
+Hacking begins in earnest
+Workshops and mentor office hours available
+Sunday:
+Final submissions due (typically by 12:00 PM)
+Judging and closing ceremony
+3. Team Formation
+Team Requirements
+
+Minimum Team Size: 2 participants
+Maximum Team Size: 5 participants
+Participants may join individually or as part of a team.
+Team Formation Assistance
+
+The Assistant Bot can connect users to a Team Formation Channel or suggest the Find a Team function.
+4. Rules & Guidelines
+Project Guidelines
+
+Projects must be completed within the event duration (from Friday evening to Sunday afternoon).
+Code must be open-source, and repositories (e.g., GitHub) must be shared with event organizers.
+Code of Conduct
+
+Respectful behavior is expected from all participants. Harassment of any kind is not tolerated.
+Participants should avoid using any proprietary code or libraries unless they are licensed for public use or made available through sponsor APIs.
+5. Prizes
+Prize Categories
+
+Best Overall Hack
+Best Use of Sponsor API
+Most Creative Project
+Best Social Impact Project
+Audience Choice Award
+Additional prizes may be offered by specific sponsors.
+Prize Distribution
+
+Prizes will be announced during the closing ceremony. Winners will be contacted through their registered email.
+6. Resources & Tools
+Available APIs, Tools & Platforms
+
+Sponsors will provide APIs and other resources to help participants.
+Example APIs include:
+API Name 1: [Insert details]
+API Name 2: [Insert details]
+The bot can provide direct links to the sponsor resources or the event's dedicated page for APIs.
+
+Workshops & Mentorship
+
+Mentors are available throughout the weekend. Participants can book 1:1 or group sessions.
+Workshop Schedule: [Insert link or resource for workshop schedule]
+7. Submission Process
+Submitting a Project
+
+Projects must be submitted via [Insert platform, e.g., Devpost].
+The project submission includes:
+A project description
+A demo video (usually 1-2 minutes)
+A link to the GitHub repository or codebase
+Submission Deadline
+
+Final Submission Deadline: [Insert specific time and date]
+Late Submissions
+
+Late submissions are not accepted. All projects must be submitted before the deadline.
+8. Event Communication
+Key Channels
+
+Official Discord/Slack Channel: [Insert link]
+Event Website for Updates: [Insert link]
+The Assistant Bot will provide links to these channels when users ask about communication.
+
+Announcements
+
+The Assistant Bot will relay important announcements such as:
+Schedule changes
+New workshops or events
+Sponsor news
+Important reminders (e.g., submission deadlines)
+9. Technical Support & Troubleshooting
+Support Resources
+
+Event Technical Support Contact: [Insert contact details]
+Common Issues:
+Issues with submission platform (e.g., Devpost)
+API keys not working
+General technical questions (e.g., IDE setup, tool installation)
+The Assistant Bot can provide links to troubleshooting guides and direct participants to the technical support team.
+
+10. Food & Amenities
+Meals & Snacks
+
+Meals will be provided during the hackathon. Specific times and locations will be announced during the event.
+Dietary Restrictions: Participants should notify organizers if they have dietary needs. These will be handled by the event team.
+Breaks & Social Activities
+
+Informal breaks and networking sessions will be available.
+Social events may include virtual happy hours, games, and other team-building activities.
+11. Privacy & Security
+Data Protection
+
+Personal Data: Participant personal data (name, email, etc.) is used solely for event-related purposes and will not be shared without consent.
+Code Privacy: Code repositories will be public (unless explicitly stated otherwise by the participant), and the event encourages participants to share their work openly.
+12. Post-Hackathon Information
+Results & Prize Announcements
+
+Winners will be announced during the Closing Ceremony.
+The Assistant Bot can provide a link to the live stream or schedule for the closing ceremony.
+Project Access After the Event
+
+After the hackathon, participants can continue working on their projects and share them with others. GitHub repositories will remain accessible as long as they are public.
+Feedback & Volunteer Opportunities
+
+Participants can submit feedback after the event via an online survey.
+The bot will provide links for those interested in volunteering or becoming mentors for future events.
+13. Additional Features
+FAQs
+
+The Assistant Bot can answer common questions about:
+How to find a team
+Event timeline
+Where to find workshops
+API documentation
+Feedback and Improvement
+
+Participants can provide feedback on the Assistant Bot's performance. The bot will gather data on common issues and enhance its responses over time.
+14. Emergency Contact Information
+For urgent issues during the event:
+
+Event Help Desk: CRX Lobby First Floor
+On-site/Online Emergency Contact: Campus Security - (613) 562 - 5411, For Life Threatening Emergencies - 911

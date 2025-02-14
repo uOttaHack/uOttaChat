@@ -1,54 +1,252 @@
-# **uOttaChat**
+# uOttaChat
 
-uOttaChat is uOttaHack's fine-tuned LLM! This repo is the FastAPI backend that allows uOttaChat to be live on the internet via REST API.
+uOttaChat is a chatbot service built by the uOttaHack team (the University of Ottawa's hackathon) and released as an open-source project for the hackathon community. It enables participants to ask questions about the event and receive real-time, context-aware responses through live sites & Discord integration.
 
-## **About**
+**Note:** Anyone implementing this service should include a disclaimer stating that LLMs can make mistakes and that critical information should be double-checked.
 
-Built with **Python** and **FastAPI**, uOttaChat runs on an **EC2 instance** and uses a fine-tuned pre-trained LLM (Open AI's GPT-4) to answer event-related questions quickly. It handles queries about challenges, schedules, floor info, and food options, helping reduce people asking organizer Qs.
+## Table of Contents
 
-Use Case: We integrated it into the live site via a chat page!
+- [Features](#features)
+- [Architecture](#architecture)
+- [Local Development & Setup](#local-development--setup)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Prompt Engineering & Customization](#prompt-engineering--customization)
+- [Contributing](#contributing)
+- [License](#license)
+- [Frontend Integration](#frontend-integration)
 
-## **Architecture**
-<img width="1991" alt="Screen Shot 2024-11-28 at 5 51 58 PM" src="https://github.com/user-attachments/assets/b58f2840-306d-410b-974b-1d8c2b9cf5c9">
+## Features
 
+- **Real-Time Information:** Dynamic event details, FAQs, and schedules
+- **Context-Aware Responses:** Intelligent handling of follow-up questions
+- **Custom Chained Prompts:** Two-step response system for accuracy
+- **Reference Data Injection:** Dynamic event data integration
+- **Discord Integration:** Native Discord bot functionality
+- **NGINX & SSL Support:** Production-ready deployment scripts
 
-- **Backend**: 
-  - **FastAPI** REST API.
-  - Hosted on **EC2** instance.
-  - Calling our custom trained version on OpenAI's server via API call.
+## Architecture
 
-- **Frontend**:
-  - Integrated into the live site.
+1. **FastAPI Chat API:**
+   - `/chat` endpoint for query processing
+   - In-memory session store with TTL
+   - Cohere API integration with reflection step
 
+2. **Discord Bot:**
+   - WebSocket-based Discord integration
+   - Mention/command listening
+   - Synchronized responses with API
 
-## **Screenshots**
-<img width="1809" alt="Screen Shot 2024-11-28 at 12 06 31 AM" src="https://github.com/user-attachments/assets/242464a0-e7c3-4161-b479-89949b5b7611">
+## Local Development & Setup
 
+1. **Clone the repository:**
+```bash
+git clone https://github.com/uOttaHack/uotta-chatbot.git
+cd uotta-chatbot
+```
 
-## **Deployment**
-TODO!
+2. **Set up Python virtual environment:**
+```bash
+python3 -m venv venv
+source venv/bin/activate  # On Windows, use: venv\Scripts\activate
+```
 
-## **Future Improvements**
+3. **Install dependencies:**
+```bash
+pip install -r requirements.txt
+```
 
-We should open-source this for other hackathons to deploy and use :)
+4. **Configure environment variables:**
+```bash
+cp .env.example .env
+# Open .env file and update with your credentials
+```
 
+5. **Start the server:**
+```bash
+uvicorn app:app --reload
+```
 
+## Usage
 
-Finetuning:
+### API Endpoint
+```json
+POST /chat
+{
+    "userMessage": "What time does opening ceremonies start?"
+}
+```
 
-- https://platform.openai.com/docs/guides/fine-tuning/
+### Discord Commands
+Mention the bot in your specified server: `@uOttaHack_bot your question here`
 
+## Configuration
 
-you have to train with somehting like this: 
-{"prompt": "What is uOttaHack?", "completion": " uOttaHack is a hackathon part of the Major League Hacking 2025 Hackathon Season. It runs from January 17-19, 2025, at the University of Ottawa (CRX)."}
-{"prompt": "Where is uOttaHack 7 held?", "completion": " uOttaHack 7 will be held in person at the Learning Crossroads (CRX) at the University of Ottawa. Address: 100 Louis-Pasteur Private, Ottawa, ON K1N 9N3."}
-{"prompt": "Who are the sponsors of uOttaHack?", "completion": " The sponsors for uOttaHack 7 include Solace, Nav Canada, Survey Monkey, CSE Canada, DEEPCODE, IPSG, Deloitte, Red Bull, Warp, Elegoo, Huion, and Long & McQuade."}
-{"prompt": "What are the challenges at uOttaHack?", "completion": " uOttaHack 7 includes several challenges: Solace PubSub+ Challenge, Enhancing the EV Experience, Office of The President Challenge, CSE Machine Learning Challenge, Best Sustainability Hackathon, Scoreboard Challenge, Best Carleton x uOttawa Collab, and many more."}
-{"prompt": "What prizes are available for uOttaHack winners?", "completion": " Prizes include Meta Quest 2 headsets, Apple Airpods, Google Nest Minis, $500 tuition credits, and more. Each challenge has specific prizes for winners."}
-{"prompt": "What is the food menu at uOttaHack?", "completion": " The menu includes:\n- Friday Dinner: Burrito bowls\n- Saturday Breakfast: Baked goods, coffee, fruit, and yogurt\n- Saturday Lunch: Korean bowls (chicken, beef, vegetarian)\n- Saturday Dinner: Shawarma\n- Sunday Breakfast: Baked goods, coffee, fruit, and yogurt."}
-{"prompt": "What are the building floor details for uOttaHack?", "completion": " The building floors include:\n- Floor 1: Career Fair, Lobby, Registration, Washrooms\n- Floor 2: Hacker Rooms, Space, Washrooms\n- Floor 3: Food Room, Hacker Rooms, Individual Hacker Rooms\n- Floor 4: Sleep Room, Dishwashing Station, Washrooms\n- Floor 5: Common Area, Team Formation Room, Individual Hacker Rooms."}
-{"prompt": "Tell me about the Solace PubSub+ Challenge.", "completion": " The Solace PubSub+ Challenge requires building a project with multiple applications communicating through a Solace Event Broker. Judging criteria include innovation and effective use of Event-Driven Architecture. Prizes include 4 x $250 gift cards."}
-{"prompt": "What is the Office of The President Challenge?", "completion": " The challenge involves developing a tool that replicates a study hall for students to collaborate online. Features include chatting (text/audio), sharing insights, and asking questions. Prizes: 4 x $500 tuition credits."}
-{"prompt": "What is the food menu for Saturday dinner?", "completion": " Saturday Dinner: Shawarma."}
+Key environment variables:
+```bash
+PORT=8000
+COHERE_API_KEY_TRIAL=your_key_here
+REF_DATA_API_URL=your_hackathon_api_data_reference_url
+ALLOWED_ORIGIN=your_hackathon_live_site_url (any front-end url using the chatbot)
+```
 
+## Prompt Engineering & Customization
 
+The chatbot uses a two-step prompting system with dynamic reference data injection:
+
+### Reference Data Integration
+```python
+# Fetch your hackathon's "source of truth"
+reference_data = {
+    "schedule": [...],
+    "faq": [...],
+    "venue": {...}
+}
+```
+
+### Two-Step Prompting
+1. **Initial Response:**
+```python
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are the official hackathon assistant..."
+        },
+        {
+            "role": "user",
+            "content": user_message
+        }
+    ],
+    "documents": [reference_data]
+}
+```
+
+2. **Reflection Step:**
+```python
+{
+    "messages": [
+        # Previous context
+        {
+            "role": "system",
+            "content": "Review and improve the previous response..."
+        }
+    ],
+    "documents": [reference_data]
+}
+```
+
+## Frontend Integration
+
+Here's an example React component we built and integrated into our live site ([live.uottahack.ca/chat](https://live.uottahack.ca/chat)):
+
+```typescript
+import React, { useState } from 'react';
+import axios from 'axios';
+
+interface Message {
+    text: string;
+    from: 'user' | 'chatbot';
+}
+
+const Chat: React.FC = () => {
+    const [message, setMessage] = useState('');
+    const [messages, setMessages] = useState<Message[]>([]);
+    const [isSending, setIsSending] = useState(false);
+
+    const sendMessage = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (message.trim()) {
+            // Add user message to chat
+            setMessages(prev => [...prev, { text: message, from: 'user' }]);
+            setMessage('');
+            setIsSending(true);
+
+            try {
+                // Send message to API
+                const response = await axios.post('https://api.uottahack.ca/chat', {
+                    userMessage: message
+                });
+
+                // Add bot response to chat
+                if (response.data.botMessage) {
+                    setMessages(prev => [...prev, {
+                        text: response.data.botMessage,
+                        from: 'chatbot'
+                    }]);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                setMessages(prev => [...prev, {
+                    text: 'Sorry, something went wrong. Please try again.',
+                    from: 'chatbot'
+                }]);
+            }
+
+            setIsSending(false);
+        }
+    };
+
+    return (
+        <div className="chat-container">
+            {/* Messages Display */}
+            <div className="messages-list">
+                {messages.map((msg, index) => (
+                    <div key={index} className={`message ${msg.from}`}>
+                        {msg.text}
+                    </div>
+                ))}
+            </div>
+
+            {/* Message Input Form */}
+            <form onSubmit={sendMessage}>
+                <input
+                    type="text"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Message uOttaChat"
+                    disabled={isSending}
+                />
+                <button type="submit" disabled={isSending}>
+                    Send
+                </button>
+            </form>
+        </div>
+    );
+};
+
+export default Chat;
+```
+
+### Key Features
+
+- Message history management
+- Loading states
+- Error handling
+- TypeScript support
+- Axios for API calls
+
+### Implementation Notes
+
+1. Replace the API endpoint with your deployment URL
+2. Add appropriate styling
+3. Consider adding:
+   - Message persistence
+   - Rate limiting
+   - Typing indicators
+   - Message validation
+
+## Contributing
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Open a pull request
+
+## License
+
+MIT License - see [LICENSE](LICENSE) for details.
+
+## Support
+
+Join our uOttaHack general community Discord, feel free to ask us questions about uOttaChat!
+[Join Discord](https://discord.gg/XDQ94xsDwB)
