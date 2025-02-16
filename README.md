@@ -14,9 +14,9 @@ uOttaChat is a chatbot service built by the uOttaHack team (the University of Ot
 - [Usage](#usage)
 - [Configuration](#configuration)
 - [Prompt Engineering & Customization](#prompt-engineering--customization)
+- [Frontend Integration](#frontend-integration)
 - [Contributing](#contributing)
 - [License](#license)
-- [Frontend Integration](#frontend-integration)
 
 ## Features
 
